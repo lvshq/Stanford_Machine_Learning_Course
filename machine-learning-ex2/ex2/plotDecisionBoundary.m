@@ -41,8 +41,26 @@ else
 
     % Plot z = 0
     % Notice you need to specify the range [0, 0]
+    % countour 通常用来画等高线。u、v是步长，z是等高线的值。
+    % 后面的[0, 0]表示只花值为0的等高线，也就是decision boundary。
     contour(u, v, z, [0, 0], 'LineWidth', 2)
 end
 hold off
 
+%%  Self-written contour test code:
+% a = linspace(0, 1, 11);
+% b = linspace(0, 1, 11);
+% c = zeros(length(a), length(b));
+% % 如果没有下面这部分，直接用0矩阵执行contour函数，会提示警告并且没有等高线。
+% c = c';
+% for i = 1:length(a)
+%     for j = 1:length(b)
+%         c(i,j) = a(i) + b(j);
+%     end
+% end
+% % c 不能为常量，需要通过其他两个变量赋值，否则会提示：ZData 为常量时，无法显示等高线
+% contour(a,b,c);
+
 end
+
+
