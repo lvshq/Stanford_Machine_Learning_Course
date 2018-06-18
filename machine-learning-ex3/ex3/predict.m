@@ -21,16 +21,18 @@ p = zeros(size(X, 1), 1);
 %       can use max(A, [], 2) to obtain the max for each row.
 %
 
-% The bias item should be the first item!
-% So `ones(m,1)` should be at left of X.
+% The bias unit should be added as the first column in the input and hidden layers,
+% and in the hidden layer it should be added after using the sigmoid() function.
 L1_input = [ones(m, 1) X];
 % Don't forget the sigmoid function.
 L1_output = sigmoid(L1_input * Theta1');
 L2_input = [ones(m, 1) L1_output];
 L2_output = sigmoid(L2_input * Theta2');
 
-% maximum is max element in each row.
-% p is the index of each max element, i.e. the class with max probability.
+% The max() function can return two values:
+%   The maximum value in each row. We don't care about that.
+%   The row index where the maximum value was found. That is our predicted
+%      classification - the row where the maximum value was found.
 [maximum, p] = max(L2_output, [], 2);
 
 % =========================================================================

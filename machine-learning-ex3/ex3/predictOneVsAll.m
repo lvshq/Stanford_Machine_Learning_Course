@@ -33,8 +33,10 @@ X = [ones(m, 1) X];
 % The probability maxtrix.
 prob_for_each_class = sigmoid(X * all_theta');
 
-% maximum is max element in each row.
-% p is the index of each max element, i.e. the class with max probability.
+% The max() function can return two values:
+%   The maximum value in each row. We don't care about that.
+%   The row index where the maximum value was found. That is our predicted
+%      classification - the row where the maximum value was found.
 [maximum, p] = max(prob_for_each_class, [], 2);
 
 
